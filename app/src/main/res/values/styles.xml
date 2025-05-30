@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dashboard Button Style -->
+    <style name="CuteButtonStyle.Dashboard" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/gold_primary</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:drawableLeft">@drawable/ic_arrow_forward</item>
+    </style>
+
+    <style name="CuteButtonStyle.Dashboard.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/gold_light</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textColor">@color/dark_peach</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+    </style>
+
+    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+    <style name="CustomAlertDialog" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+</resources>

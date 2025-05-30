@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/bg_gradient_premium"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="@string/app_name"
+            android:textColor="@color/gold_primary"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:shadowColor="@color/gold_dark"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="12"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/updateCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="8dp"
+            android:layout_marginBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_gradient_premium"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    app:tint="@color/gold_primary"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_download"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/new_update_available"
+                    android:textColor="@color/dark_mustard"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/update_description"
+                    android:textColor="@color/dark_mustard"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/progressText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/dark_mustard"
+                    android:textSize="24sp"
+                    android:singleLine="false"
+                    android:visibility="gone"/>
+
+                <!-- New download stats TextView -->
+                <TextView
+                    android:id="@+id/downloadStatsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textColor="@color/dark_mustard"
+                    android:textSize="14sp"
+                    android:visibility="gone"/>
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/circularProgress"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="0"
+                    android:visibility="gone"
+                    app:indicatorColor="@color/coral"
+                    app:trackColor="@color/gray_light"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="16dp"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="0"
+                    android:visibility="gone"
+                    android:progressDrawable="@drawable/progress_horizontal"/>
+
+                <TextView
+                    android:id="@+id/releaseNotesText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/dark_mustard"
+                    android:textSize="14sp"/>
+
+                <Button
+                    android:id="@+id/downloadButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/download_update"
+                    android:textColor="@color/gray_light"
+                    app:icon= "@drawable/ic_download"
+                    app:iconTint="@color/gray_light"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"/>
+
+                <Button
+                    android:id="@+id/btn_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="@color/coral"
+                    android:text="Open Network Settings"
+                    android:textColor="@color/gray_light"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/instalinstruction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/instructiontext"
+                    android:textColor="@color/dark_mustard"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/installButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/green"
+                    android:text="@string/install_update"
+                    android:textColor="@color/gray_light"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/cancelButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

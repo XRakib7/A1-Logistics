@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_premium"
+    android:padding="20dp">
+
+    <!-- Animated honeycomb background pattern -->
+    <ImageView
+        android:id="@+id/honeycomb_pattern"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_gradient_yellow"
+        android:alpha="0.1"
+        android:scaleType="centerCrop"/>
+
+    <!-- Main logo with bounce animation -->
+    <RelativeLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/a1carlogo"
+            android:elevation="8dp"/>
+
+        <!-- Loading indicator with honey theme -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading_animation"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/world_loop"/>
+
+        <!-- App name with nice typography -->
+        <ImageView
+            android:id="@+id/name_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/a1namelogo"/>
+
+        <!-- Version/subtitle text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loading_animation"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Delivering Happiness"
+            android:textColor="@color/gold_primary"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loading_animation"
+            android:layout_marginTop="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+
+        <!-- Floating bees for extra dopamine
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/bee1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="30dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/arrieved_animaton"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/bee2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="40dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/arrieved_animaton"/>  -->
+
+    </RelativeLayout>
+    <!-- Error container (hidden by default) -->
+    <RelativeLayout
+        android:id="@+id/error_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@drawable/bg_gradient_premium"
+        android:padding="40dp">
+
+        <ImageView
+            android:id="@+id/error_icon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/no_internet"
+            app:tint="@color/gold_primary"/>
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/error_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="No Internet Connection"
+            android:textColor="@color/dark_mustard"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/error_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/error_message"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Please check your connection and try again"
+            android:textColor="@color/dark_mustard"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btn_retry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/error_description"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/gold_primary"
+            android:text="Try Again"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btn_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_retry"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/gold_dark"
+            android:text="Open Network Settings"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_settings"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Exit App"
+            android:textColor="@color/gold_primary"/>
+    </RelativeLayout>
+
+</RelativeLayout>
+
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Create a subtle noise pattern using random dots -->
+    <group>
+        <!-- 100 random transparent-white dots -->
+        <path
+            android:fillColor="#08FFFFFF"
+            android:pathData="M8,12h1v1h-1z M15,28h1v1h-1z M22,5h1v1h-1z M30,18h1v1h-1z M38,42h1v1h-1z M45,8h1v1h-1z M52,35h1v1h-1z M60,22h1v1h-1z M12,48h1v1h-1z M20,15h1v1h-1z M28,31h1v1h-1z M35,55h1v1h-1z M42,25h1v1h-1z M50,9h1v1h-1z M5,38h1v1h-1z M18,60h1v1h-1z M25,14h1v1h-1z M32,47h1v1h-1z M40,21h1v1h-1z M48,33h1v1h-1z M55,7h1v1h-1z M10,52h1v1h-1z M22,19h1v1h-1z M30,44h1v1h-1z M38,11h1v1h-1z M45,27h1v1h-1z M53,50h1v1h-1z M60,16h1v1h-1z M7,41h1v1h-1z M15,6h1v1h-1z M23,29h1v1h-1z M31,53h1v1h-1z M39,24h1v1h-1z M46,37h1v1h-1z M54,13h1v1h-1z M3,58h1v1h-1z M11,20h1v1h-1z M19,45h1v1h-1z M27,10h1v1h-1z M34,32h1v1h-1z M42,49h1v1h-1z M50,23h1v1h-1z M57,36h1v1h-1z M4,9h1v1h-1z M12,26h1v1h-1z M20,54h1v1h-1z M28,17h1v1h-1z M36,40h1v1h-1z M43,5h1v1h-1z M51,30h1v1h-1z M59,43h1v1h-1z M6,14h1v1h-1z M14,48h1v1h-1z M21,22h1v1h-1z M29,35h1v1h-1z M37,51h1v1h-1z M44,7h1v1h-1z M52,19h1v1h-1z M60,57h1v1h-1z M9,25h1v1h-1z M17,39h1v1h-1z M24,13h1v1h-1z M32,46h1v1h-1z M40,28h1v1h-1z M47,3h1v1h-1z M55,34h1v1h-1z M2,21h1v1h-1z M10,55h1v1h-1z M18,8h1v1h-1z M26,42h1v1h-1z M33,16h1v1h-1z M41,31h1v1h-1z M49,44h1v1h-1z M56,59h1v1h-1z M3,27h1v1h-1z M11,50h1v1h-1z M19,4h1v1h-1z M27,37h1v1h-1z M35,15h1v1h-1z M42,53h1v1h-1z M50,24h1v1h-1z M58,41h1v1h-1z M5,32h1v1h-1z M13,11h1v1h-1z M21,47h1v1h-1z M29,6h1v1h-1z M36,20h1v1h-1z M44,56h1v1h-1z M52,38h1v1h-1z"/>
+    </group>
+</vector>

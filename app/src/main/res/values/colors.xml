@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="green">#4CAF50</color>
+    <color name="light_gray">#8C8C8C</color>
+    <color name="colorPrimary">#304FFE</color>
+    <color name="sunshine_yellow">#FFEB3B</color>
+    <color name="mustard_yellow">#FFD600</color>
+    <color name="card_stroke">#E0E0E0</color>
+    <color name="red">#F44336</color>
+    <color name="coral">#FF8A65</color>
+    <!-- Gold/Yellow Theme -->
+    <color name="gold_primary">#FFD700</color>  <!-- Primary gold -->
+    <color name="gold_dark">#FFC600</color>     <!-- Dark gold -->
+    <color name="gold_light">#FFF4B1</color>    <!-- Light gold (ripples) -->
+
+    <!-- Peach Accents -->
+    <color name="soft_peach">#FFCCBC</color>   <!-- Secondary -->
+    <color name="peach_dark">#FFAB91</color>    <!-- Dark peach -->
+
+    <!-- Neutrals -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#1A1A1A</color>
+    <color name="gray_light">#F5F5F5</color>
+
+    <!-- Backgrounds -->
+    <color name="bg_gradient_start">#FFF9E6</color>  <!-- Light yellow -->
+    <color name="bg_gradient_end">#FFFFFF</color>    <!-- White -->
+    <!-- Dark background colors -->
+    <color name="dark_background">#121212</color>
+    <color name="dark_surface">#1E1E1E</color>
+
+    <!-- Night Theme Colors -->
+    <color name="dark_bg">#121212</color>
+    <color name="dark_input_bg">#1E1E1E</color>
+    <color name="dark_yellow">#FFC107</color>  <!-- Amber -->
+    <color name="dark_mustard">#FFA000</color>
+    <color name="dark_peach">#FFAB91</color>
+    <color name="dark_coral">#FF7043</color>
+    <!-- Adjusted peach colors for dark mode -->
+    <color name="peach_soft">#FFAB91</color>
+    <color name="peach_light">#FFCCBC</color>
+
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- Update screen colors -->
+    <color name="mandatory_update">#E53935</color>
+    <color name="optional_update">#3F51B5</color>
+    <!-- Add to colors.xml -->
+    <color name="glass_primary">#30FFFFFF</color>
+    <color name="glass_highlight">#B0FFFFFF</color>
+    <color name="glass_edge">#80FFFFFF</color>
+    <!-- Text colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="primary">#2E7D32</color>
+    <color name="primaryDark">#1B5E20</color>
+    <color name="primaryLight">#C8E6C9</color>
+    <color name="dark_bronze">#2A2100</color>
+    <color name="dark_gold">#4A3C00</color>
+    <color name="secondary">#1565C0</color>
+    <color name="secondaryLight">#90CAF9</color>
+
+    <color name="tertiary">#6A1B9A</color>
+    <color name="tertiaryLight">#CE93D8</color>
+    <color name="dark_slate">#FF2A2F3B</color>
+    <color name="soft_shadow">#FF1E2229</color>
+    <color name="neon_cyan">#FF00F9FF</color>
+    <color name="electric_blue">#FF0066FF</color>
+    <color name="deep_purple">#FF6E00F0</color>
+    <color name="background">#F5F5F5</color>
+    <color name="primaryColor">#6200EE</color>
+    <color name="secondaryTextColor">#757575</color>
+    <color name="tertiaryTextColor">#BDBDBD</color>
+    <color name="gray">#757575</color>
+
+</resources>

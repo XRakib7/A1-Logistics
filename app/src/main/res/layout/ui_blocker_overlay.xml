@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/uiBlockerOverlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    android:visibility="gone">
+
+    <!-- Updated to wrap_content -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loadingAnimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="100dp"
+        app:lottie_rawRes="@raw/loading"
+        app:lottie_loop="true"/>
+
+    <!-- Updated to wrap_content -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/errorAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="100dp"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/failed"
+        app:lottie_loop="false"/>
+
+    <TextView
+        android:id="@+id/statusMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="50dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/successAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="100dp"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/success_with_confetti"
+        app:lottie_loop="false"/>
+</FrameLayout>

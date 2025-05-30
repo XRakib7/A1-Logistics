@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "67498477338",
+    "firebase_url": "https://a1-logistics-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "a1-logistics-app",
+    "storage_bucket": "a1-logistics-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67498477338:android:fad462b2a9e05ed2a10ea3",
+        "android_client_info": {
+          "package_name": "com.example.a1logisticstest1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67498477338-qu2jpc431iv1ajlijbm9kh0tiv7t830a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUeu7AQ3FuZ4rvaEVvadzBnLnIFrjwoAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67498477338-ffsecngi9he2lueqafn0oc0rofbtm0g6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "67498477338-qme12nem16bbokk7ruqgitbvrhqojrvm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.a1logistics.a1Logistics"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67498477338:android:970fd610077927bba10ea3",
+        "android_client_info": {
+          "package_name": "com.softcraft.a1logistics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67498477338-qu2jpc431iv1ajlijbm9kh0tiv7t830a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUeu7AQ3FuZ4rvaEVvadzBnLnIFrjwoAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67498477338-ffsecngi9he2lueqafn0oc0rofbtm0g6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "67498477338-qme12nem16bbokk7ruqgitbvrhqojrvm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.a1logistics.a1Logistics"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

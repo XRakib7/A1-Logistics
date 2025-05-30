@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_dashboard"
+        android:title="@string/nav_home"
+        android:checked="false" />
+    <item
+        android:id="@+id/nav_track"
+        android:icon="@drawable/ic_location"
+        android:title="@string/nav_track"
+        android:checked="false" />
+    <item
+        android:id="@+id/nav_services"
+        android:icon="@drawable/ic_services"
+        android:title="@string/nav_services"
+        android:checked="true" />
+    <item
+        android:id="@+id/nav_account"
+        android:icon="@drawable/accountic_account_circle"
+        android:title="@string/nav_account"
+        android:checked="false" />
+</menu>

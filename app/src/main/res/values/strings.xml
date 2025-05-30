@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">A1 Logistics</string>
+    <string name="new_update_available">New Update Available</string>
+    <string name="update_description">A new version is available. Please update to continue.</string>
+    <string name="download_update">Download Update</string>
+    <string name="install_update">Install Now</string>
+    <string name="not_now">Not Now</string>
+    <string name="error_occurred">Error Occurred</string>
+    <string name="retry">Retry</string>
+    <string name="update_icon">Update Icon</string>
+    <string name="error_icon">Error Icon</string>
+    <string name="download_now">Download Now</string>
+    <string name="install_update_button">Install Update</string>
+    <string name="download_update_button">Download Update</string>
+    <string name="downloading_update">Downloading update...</string>
+    <string name="download_complete">Download complete</string>
+    <string name="ready_to_install">Ready to install</string>
+    <string name="download_failed">Download failed: %1$s</string>
+    <string name="download_progress">%1$d%% downloaded</string>
+    <string name="no_internet_connection">No internet connection. Please check your connection.</string>
+    <string name="network_unavailable_after_retries">Network unavailable. Please try again later.</string>
+    <string name="version_document_not_found">Version info not found. Please contact support.</string>
+    <string name="error_fetching_version">Failed to fetch version: %1$s</string>
+    <string name="error_parsing_version_data">Error parsing version data: %1$s</string>
+    <string name="no_release_notes">No release notes available.</string>
+    <string name="invalid_download_url">Invalid download URL.</string>
+    <string name="server_returned_error">Server returned error code: %1$d</string>
+    <string name="failed_delete_existing_apk">Failed to delete existing APK file.</string>
+    <string name="apk_file_not_found">APK file not found for installation.</string>
+    <string name="installation_failed">Installation failed: %1$s</string>
+    <string name="network_error_title">No Internet Connection</string>
+    <string name="network_error_description">Please check your network connection and try again</string>
+    <string name="instructiontext">IF any error occures please click \"download now\" after download complete click \"Install now\"</string>
+    <string name="descriptiontext"><![CDATA[Fast, Reliable & Secure]]></string>
+    <string name="default_web_client_id">Your_Web_Client_ID_From_Google_Cloud_Console</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_track">Track</string>
+    <string name="nav_services">Services</string>
+    <string name="nav_account">Account</string>
+    <!-- Services Activity -->
+    <string name="services_title">Our Services</string>
+    <string name="contact_button">Contact Us</string>
+</resources>

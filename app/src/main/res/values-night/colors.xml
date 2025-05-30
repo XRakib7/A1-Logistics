@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+
+    <color name="text_primary">#FFFFFF</color> <!-- White -->
+    <color name="text_secondary">#BDBDBD</color> <!-- Light Gray -->
+
+    <!-- Backgrounds -->
+    <color name="bg_gradient_start">#121212</color> <!-- Dark BG -->
+    <color name="bg_gradient_end">#000000</color>
+</resources>

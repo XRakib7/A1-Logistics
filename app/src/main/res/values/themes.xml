@@ -1,0 +1,37 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base theme -->
+    <style name="Theme.A1Logistics" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color (yellowish) -->
+        <item name="colorPrimary">@color/sunshine_yellow</item>
+        <item name="colorPrimaryVariant">@color/mustard_yellow</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary color (soft peach) -->
+        <item name="colorSecondary">@color/soft_peach</item>
+        <item name="colorSecondaryVariant">@color/coral</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/mustard_yellow</item>
+        <!-- Text inputs, buttons, etc. -->
+        <item name="textInputStyle">@style/CuteTextInputStyle</item>
+        <item name="materialButtonStyle">@style/CuteButtonStyle</item>
+        <item name="android:fontFamily">sans-serif</item> <!-- Defaults to Roboto -->
+        <item name="fontFamily">@font/roboto</item> <!-- If using font family -->
+    </style>
+
+    <!-- Cute TextInputLayout Style -->
+    <style name="CuteTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/sunshine_yellow</item>
+        <item name="hintTextColor">@color/mustard_yellow</item>
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+    </style>
+
+    <!-- Cute Button Style -->
+    <style name="CuteButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/sunshine_yellow</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

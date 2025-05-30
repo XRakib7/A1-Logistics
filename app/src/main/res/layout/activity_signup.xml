@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_premium">
+
+    <!-- Main Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Animated Header -->
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/signupAnimation"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                app:lottie_rawRes="@raw/store"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
+
+            <TextView
+                android:id="@+id/signupTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Merchant Account"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Business Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp"
+                app:startIconDrawable="@drawable/ic_store">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/businessNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Business Name"
+                    android:inputType="textCapWords"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Phone Number -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp"
+                app:startIconDrawable="@drawable/ic_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    android:inputType="phone"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/verifyPhoneButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Verify"
+                    app:icon="@drawable/ic_verify"
+                    app:iconTint="@color/dark_mustard"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="8dp"
+                    android:visibility="gone"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Pickup Location -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pickupLocationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp"
+                app:startIconDrawable="@drawable/ic_location">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pickupLocationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pickup Location"
+                    android:inputType="textCapWords"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Email -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp"
+                app:startIconDrawable="@drawable/ic_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="24dp"
+                app:startIconDrawable="@drawable/ic_lock"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Sign Up Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signupButton"
+                style="@style/CuteButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_signup"
+                app:iconTint="@android:color/white"/>
+
+            <!-- Login Redirect -->
+            <TextView
+                android:id="@+id/loginRedirectText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? Login"
+                android:textColor="@color/dark_mustard"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:clickable="true"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Network Loading Overlay -->
+    <FrameLayout
+        android:id="@+id/networkOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="#80000000">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/networkLoader"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/loading"
+            app:lottie_loop="true"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/networkError"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:lottie_rawRes="@raw/failed"
+            app:lottie_loop="false"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/signupSuccessOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="#80000000"
+        android:elevation="10dp">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/signupSuccessAnimation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/signupsuccess"
+            app:lottie_loop="false"/>
+    </FrameLayout>
+</FrameLayout>
