@@ -1,417 +1,668 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@drawable/bg_gradient_yellow"
-    android:padding="16dp">
+    android:fitsSystemWindows="true">
 
+    <!-- Main Content -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="24dp">
+        android:background="@color/background">
 
-        <!-- Header with title -->
+        <!-- Toolbar -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/bg_gradient_end"
+            android:background="@color/primary_color"
             android:elevation="4dp"
+            app:menu="@menu/merchant_menu"
+            app:navigationIcon="@drawable/ic_menu"
             app:title="Merchant Dashboard"
-            app:titleTextColor="@color/dark_mustard"/>
+            app:titleTextColor="@android:color/white" />
 
-        <!-- Welcome Section -->
-        <com.google.android.material.card.MaterialCardView
+        <!-- Content Area -->
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeColor="@color/dark_mustard"
-            app:strokeWidth="1dp">
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:gravity="center">
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/dashboardAnimation"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    app:lottie_rawRes="@raw/delivery_truck"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-
-                <TextView
-                    android:id="@+id/welcomeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome back!"
-                    android:textColor="@color/dark_mustard"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:layout_marginTop="8dp"/>
-
-                <TextView
-                    android:id="@+id/merchantNameText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/dark_mustard"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Create Pickup Button -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeColor="@color/dark_mustard"
-            app:strokeWidth="1dp">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/createPickupButton"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Create Pickup Request"
-                android:textColor="@color/dark_mustard"
-                android:textAllCaps="false"
-                android:textSize="16sp"
-                android:paddingVertical="16dp"
-                app:icon="@drawable/ic_add"
-                app:iconTint="@color/dark_mustard"
-                app:strokeColor="@color/dark_mustard"
-                app:strokeWidth="1dp"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Package Summary Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeColor="@color/dark_mustard"
-            app:strokeWidth="1dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
+                android:orientation="vertical">
+                <!-- Quick Actions Section -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="📊 Package Summary"
-                    android:textColor="@color/dark_mustard"
+                    android:text="Quick Actions"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="12dp"
-                    android:drawablePadding="8dp"/>
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"/>
 
-                <GridLayout
+                <!-- Main Action Card -->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="2"
-                    android:rowCount="2"
-                    android:alignmentMode="alignMargins"
-                    android:columnOrderPreserved="false"
-                    android:rowOrderPreserved="false">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    android:backgroundTint="@color/primary_color">
 
-                    <!-- Active Packages Card -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Shipment Management"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/white"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Manage your packages efficiently"
+                            android:textSize="14sp"
+                            android:textColor="#CCFFFFFF"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/createPickupButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Create New Pickup"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            style="@style/Widget.Material3.Button"
+                            android:backgroundTint="@android:color/white"
+                            android:textColor="@color/primary_color"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- KPI Cards Row 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Total Revenue Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp">
+                        app:cardElevation="6dp"
+                        android:foreground="?android:attr/selectableItemBackground">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:orientation="vertical"
                             android:padding="16dp"
-                            android:gravity="center">
+                            android:background="@drawable/card_gradient_blue">
 
                             <ImageView
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:src="@drawable/ic_package_active"
-                                app:tint="@color/dark_mustard"/>
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_revenue"
+                                app:tint="@android:color/white"/>
+
+                            <TextView
+                                android:id="@+id/totalRevenueText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="৳0"
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Revenue"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="14sp"
+                                android:layout_marginTop="4dp"/>
+
+                            <TextView
+                                android:id="@+id/revenueGrowthText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+0% this month"
+                                android:textColor="#A5D6A7"
+                                android:textSize="12sp"
+                                android:layout_marginTop="8dp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Total Packages Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        android:foreground="?android:attr/selectableItemBackground">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/card_gradient_info">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_package"
+                                app:tint="@android:color/white"/>
+
+                            <TextView
+                                android:id="@+id/totalPackagesText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Packages"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="14sp"
+                                android:layout_marginTop="4px"/>
+
+                            <TextView
+                                android:id="@+id/packagesGrowthText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+0% this month"
+                                android:textColor="#A5D6A7"
+                                android:textSize="12sp"
+                                android:layout_marginTop="8dp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <!-- KPI Cards Row 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <!-- Success Rate Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/card_gradient_green">
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/successRateAnimation"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                app:lottie_rawRes="@raw/delivery_truck"
+                                app:lottie_autoPlay="true"
+                                app:lottie_loop="true"/>
+
+                            <TextView
+                                android:id="@+id/successRateText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"
+                                android:layout_marginTop="4dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Success Rate"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12sp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Active Packages Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/card_gradient_orange">
+
+                            <TextView
+                                android:id="@+id/activePackagesCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Active"
-                                android:textColor="@color/dark_mustard"
-                                android:textSize="14sp"
-                                android:layout_marginTop="8dp"/>
-
-                            <TextView
-                                android:id="@+id/activeCountText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textColor="@color/dark_mustard"
-                                android:textSize="24sp"
-                                android:textStyle="bold"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12sp"
                                 android:layout_marginTop="4dp"/>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Delivered Packages Card -->
-                    <com.google.android.material.card.MaterialCardView
+                            <ProgressBar
+                                android:id="@+id/activeProgressBar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:layout_marginTop="8dp"
+                                android:progress="0"
+                                android:progressTint="@android:color/white"
+                                android:progressBackgroundTint="#66FFFFFF"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Return Rate Card -->
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp">
+                        app:cardElevation="6dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:orientation="vertical"
                             android:padding="16dp"
-                            android:gravity="center">
+                            android:background="@drawable/card_gradient_red">
 
-                            <ImageView
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:src="@drawable/ic_check_circle"
-                                app:tint="@color/dark_mustard"/>
+                            <TextView
+                                android:id="@+id/returnRateText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Return Rate"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12sp"
+                                android:layout_marginTop="4dp"/>
+
+                            <TextView
+                                android:id="@+id/returnedPackagesCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 returned"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="10sp"
+                                android:layout_marginTop="4dp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+                <!-- Package Management Grid -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="View Packages"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:gravity="center"
+                            android:layout_marginBottom="16dp"/>
+
+                        <!-- Grid Layout for Package Actions -->
+                        <androidx.gridlayout.widget.GridLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:columnCount="2"
+                            app:rowCount="2">
+
+                            <!-- Active Packages Card -->
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/activePackagesCard"
+                                android:layout_width="0dp"
+                                android:layout_height="100dp"
+                                app:layout_columnWeight="1"
+                                app:layout_rowWeight="1"
+                                android:layout_margin="8dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp"
+                                android:foreground="?android:attr/selectableItemBackground">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="16dp"
+                                    android:background="@drawable/card_gradient_orange_light">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:src="@drawable/ic_package_active"
+                                        app:tint="@color/dark_mustard"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Active"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/text_primary"
+                                        android:layout_marginTop="8dp"/>
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <!-- Delivered Packages Card -->
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/deliveredPackagesCard"
+                                android:layout_width="0dp"
+                                android:layout_height="100dp"
+                                app:layout_columnWeight="1"
+                                app:layout_rowWeight="1"
+                                android:layout_margin="8dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp"
+                                android:foreground="?android:attr/selectableItemBackground">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="16dp"
+                                    android:background="@drawable/card_gradient_green_light">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:src="@drawable/ic_package"
+                                        app:tint="@color/success_color"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Delivered"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/text_primary"
+                                        android:layout_marginTop="8dp"/>
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <!-- Returned Packages Card -->
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/returnedPackagesCard"
+                                android:layout_width="0dp"
+                                android:layout_height="100dp"
+                                app:layout_columnWeight="1"
+                                app:layout_rowWeight="1"
+                                android:layout_margin="8dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp"
+                                android:foreground="?android:attr/selectableItemBackground">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="16dp"
+                                    android:background="@drawable/card_gradient_red_light">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:src="@drawable/ic_returned"
+                                        app:tint="@color/danger_color"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Returned"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/text_primary"
+                                        android:layout_marginTop="8dp"/>
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <!-- All Packages Card -->
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/allPackagesCard"
+                                android:layout_width="0dp"
+                                android:layout_height="100dp"
+                                app:layout_columnWeight="1"
+                                app:layout_rowWeight="1"
+                                android:layout_margin="8dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp"
+                                android:foreground="?android:attr/selectableItemBackground">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="16dp"
+                                    android:background="@drawable/card_gradient_blue_light">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:src="@drawable/ic_warehouse"
+                                        app:tint="@color/primary_color"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="All Packages"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/text_primary"
+                                        android:layout_marginTop="8dp"/>
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                        </androidx.gridlayout.widget.GridLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Package Distribution Chart -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Package Status Distribution"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"/>
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/packageDistributionChart"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="8dp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Quick Stats -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="16dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:id="@+id/deliveredPackagesCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/success_color"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Delivered"
-                                android:textColor="@color/dark_mustard"
                                 android:textSize="14sp"
-                                android:layout_marginTop="8dp"/>
-
-                            <TextView
-                                android:id="@+id/deliveredCountText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textColor="@color/dark_mustard"
-                                android:textSize="24sp"
-                                android:textStyle="bold"
+                                android:textColor="@color/text_secondary"
                                 android:layout_marginTop="4dp"/>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Returned Packages Card -->
-                    <com.google.android.material.card.MaterialCardView
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp">
+                        app:cardElevation="4dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:padding="16dp"
-                            android:gravity="center">
-
-                            <ImageView
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:src="@drawable/ic_returned"
-                                app:tint="@color/dark_mustard"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Returned"
-                                android:textColor="@color/dark_mustard"
-                                android:textSize="14sp"
-                                android:layout_marginTop="8dp"/>
-
-                            <TextView
-                                android:id="@+id/returnedCountText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textColor="@color/dark_mustard"
-                                android:textSize="24sp"
-                                android:textStyle="bold"
-                                android:layout_marginTop="4dp"/>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <!-- All Packages Card -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp"
-                            android:gravity="center">
-
-                            <ImageView
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:src="@drawable/ic_warehouse"
-                                app:tint="@color/dark_mustard"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="All Packages"
-                                android:textColor="@color/dark_mustard"
-                                android:textSize="14sp"
-                                android:layout_marginTop="8dp"/>
+                            android:gravity="center"
+                            android:padding="16dp">
 
                             <TextView
                                 android:id="@+id/allCountText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
-                                android:textColor="@color/dark_mustard"
                                 android:textSize="24sp"
                                 android:textStyle="bold"
+                                android:textColor="@color/primary_color"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="All Packages"
+                                android:textSize="14sp"
+                                android:textColor="@color/text_secondary"
                                 android:layout_marginTop="4dp"/>
+
                         </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-                </GridLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Quick Actions Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeColor="@color/dark_mustard"
-            app:strokeWidth="1dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="⚡ Quick Actions"
-                    android:textColor="@color/dark_mustard"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="12dp"
-                    android:drawablePadding="8dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/activePackagesButton"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Active"
-                        android:textAllCaps="false"
-                        android:textSize="14sp"
-                        app:icon="@drawable/ic_package_active"
-                        app:iconTint="@color/dark_mustard"
-                        app:strokeColor="@color/dark_mustard"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/deliveredPackagesButton"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Delivered"
-                        android:textAllCaps="false"
-                        android:layout_marginStart="8dp"
-                        android:textSize="14sp"
-                        app:icon="@drawable/ic_check_circle"
-                        app:iconTint="@color/dark_mustard"
-                        app:strokeColor="@color/dark_mustard"/>
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/returnedPackagesButton"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Returned"
-                        android:textAllCaps="false"
-                        android:textSize="14sp"
-                        app:icon="@drawable/ic_returned"
-                        app:iconTint="@color/dark_mustard"
-                        app:strokeColor="@color/dark_mustard"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/allPackagesButton"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="All"
-                        android:textAllCaps="false"
-                        android:layout_marginStart="8dp"
-                        android:textSize="14sp"
-                        app:icon="@drawable/ic_warehouse"
-                        app:iconTint="@color/dark_mustard"
-                        app:strokeColor="@color/dark_mustard"/>
-                </LinearLayout>
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Logout Button -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/logoutButton"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:textColor="@color/dark_mustard"
-            android:layout_gravity="end"
-            android:layout_marginTop="8dp"
-            app:icon="@drawable/ic_logout"
-            app:iconTint="@color/dark_mustard"/>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
-</ScrollView>
+
+    <!-- Navigation Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header_merchant"
+        app:menu="@menu/merchant_nav_menu"
+        android:background="@android:color/white"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

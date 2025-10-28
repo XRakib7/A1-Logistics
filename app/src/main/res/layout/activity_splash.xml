@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient_premium"
+    android:background="@color/white"
     android:padding="20dp">
 
     <!-- Animated honeycomb background pattern -->
@@ -11,7 +11,7 @@
         android:id="@+id/honeycomb_pattern"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_gradient_yellow"
+        android:src="@color/white"
         android:alpha="0.1"
         android:scaleType="centerCrop"/>
 

@@ -1,6 +1,7 @@
 package com.softcraft.a1logistics;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -41,7 +42,11 @@ public class AllMerchantsActivity extends BaseActivity {
 
         loadMerchants();
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // No menu for settings
+        return false;
+    }
     private void loadMerchants() {
         progressLoader.setVisibility(View.VISIBLE);
         progressLoader.playAnimation();

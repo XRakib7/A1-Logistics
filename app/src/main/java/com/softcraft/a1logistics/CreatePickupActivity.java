@@ -2,6 +2,8 @@ package com.softcraft.a1logistics;
 
 import static android.content.ContentValues.TAG;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -33,13 +36,22 @@ public class CreatePickupActivity extends AppCompatActivity {
     private EditText customerNameEditText, customerNumberEditText,
             deliveryLocationEditText, codPriceEditText, packageValueEditText,
             itemQuantityEditText, packageDetailsEditText, weightEditText, pickupLocationEditText;
-    private Button submitButton;
+    private MaterialButton submitButton;
     private UIBlocker uiBlocker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_pickup);
+
+        // Set up toolbar
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Create Pickup");
+
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+
         uiBlocker = new UIBlocker(this);
 
         db = FirebaseFirestore.getInstance();
@@ -149,6 +161,7 @@ public class CreatePickupActivity extends AppCompatActivity {
             });
         }
     }
+
     private void showConfirmationDialog(String orderId, String customerName,
                                         String customerNumber, String deliveryLocation,
                                         String pickupLocation, String codPrice) {
@@ -158,21 +171,32 @@ public class CreatePickupActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.setCancelable(false);
 
-        // Set the dialog data
+        // Set the dialog data for ALL fields
         TextView tvOrderId = dialogView.findViewById(R.id.tvOrderId);
         TextView tvCustomerName = dialogView.findViewById(R.id.tvCustomerName);
         TextView tvCustomerPhone = dialogView.findViewById(R.id.tvCustomerPhone);
         TextView tvDeliveryLocation = dialogView.findViewById(R.id.tvDeliveryLocation);
         TextView tvPickupLocation = dialogView.findViewById(R.id.tvPickupLocation);
         TextView tvCodAmount = dialogView.findViewById(R.id.tvCodAmount);
-        Button btnDone = dialogView.findViewById(R.id.btnDone);
+        TextView tvStatus = dialogView.findViewById(R.id.tvStatus);
+        MaterialButton btnDone = dialogView.findViewById(R.id.btnDone);
 
-        tvOrderId.setText(String.format("Order ID: %s", orderId));
-        tvCustomerName.setText(String.format("Customer: %s", customerName));
-        tvCustomerPhone.setText(String.format("Phone: %s", customerNumber));
-        tvDeliveryLocation.setText(String.format("Delivery To: %s", deliveryLocation));
-        tvPickupLocation.setText(String.format("Pickup From: %s", pickupLocation));
-        tvCodAmount.setText(String.format("COD Amount: ৳%s", codPrice));
+        // Debug logging to check values
+        Log.d("ConfirmationDialog", "Order ID: " + orderId);
+        Log.d("ConfirmationDialog", "Customer Name: " + customerName);
+        Log.d("ConfirmationDialog", "Customer Phone: " + customerNumber);
+        Log.d("ConfirmationDialog", "Delivery Location: " + deliveryLocation);
+        Log.d("ConfirmationDialog", "Pickup Location: " + pickupLocation);
+        Log.d("ConfirmationDialog", "COD Price: " + codPrice);
+
+        // Set all the data properly
+        if (tvOrderId != null) tvOrderId.setText(orderId);
+        if (tvCustomerName != null) tvCustomerName.setText(customerName);
+        if (tvCustomerPhone != null) tvCustomerPhone.setText(customerNumber);
+        if (tvDeliveryLocation != null) tvDeliveryLocation.setText(deliveryLocation);
+        if (tvPickupLocation != null) tvPickupLocation.setText(pickupLocation);
+        if (tvCodAmount != null) tvCodAmount.setText(String.format("৳%s", codPrice));
+        if (tvStatus != null) tvStatus.setText("Pickup Pending");
 
         btnDone.setOnClickListener(v -> {
             dialog.dismiss();

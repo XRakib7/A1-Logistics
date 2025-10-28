@@ -35,7 +35,7 @@ public class BaseActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.remove("currentUser");
         editor.apply();
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
     // Add these methods to BaseActivity.java

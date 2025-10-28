@@ -1,56 +1,466 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:id="@+id/welcomeText"
+    <!-- Main Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background">
+
+        <!-- Toolbar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary_color"
+            app:title="Admin Dashboard"
+            app:menu="@menu/admin_menu"
+            app:navigationIcon="@drawable/ic_menu"
+            android:elevation="4dp"
+            app:titleTextColor="@color/white"/>
+
+        <!-- Content Area -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- KPI Cards Row 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Total Revenue Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        android:foreground="?android:attr/selectableItemBackground">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/card_gradient_blue">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_revenue"
+                                app:tint="@color/white"/>
+
+                            <TextView
+                                android:id="@+id/totalRevenueText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="৳0"
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Revenue"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="14sp"
+                                android:layout_marginTop="4dp"/>
+
+                            <TextView
+                                android:id="@+id/revenueGrowthText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+0% this month"
+                                android:textColor="#A5D6A7"
+                                android:textSize="12sp"
+                                android:layout_marginTop="8dp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Total Packages Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        android:foreground="?android:attr/selectableItemBackground">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/card_gradient_primary">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_package"
+                                app:tint="@color/white"/>
+
+                            <TextView
+                                android:id="@+id/totalPackagesText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Packages"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="14sp"
+                                android:layout_marginTop="4px"/>
+
+                            <TextView
+                                android:id="@+id/packagesGrowthText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+0% this month"
+                                android:textColor="#A5D6A7"
+                                android:textSize="12sp"
+                                android:layout_marginTop="8dp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <!-- KPI Cards Row 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <!-- Success Rate Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/card_gradient_green">
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/successRateAnimation"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                app:lottie_rawRes="@raw/delivery_truck"
+                                app:lottie_autoPlay="true"
+                                app:lottie_loop="true"/>
+
+                            <TextView
+                                android:id="@+id/successRateText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"
+                                android:layout_marginTop="4dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Success Rate"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12sp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Active Packages Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/card_gradient_orange">
+
+                            <TextView
+                                android:id="@+id/activePackagesCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Active"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12sp"
+                                android:layout_marginTop="4dp"/>
+
+                            <ProgressBar
+                                android:id="@+id/activeProgressBar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:layout_marginTop="8dp"
+                                android:progress="0"
+                                android:progressTint="@android:color/white"
+                                android:progressBackgroundTint="#66FFFFFF"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Return Rate Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/card_gradient_red">
+
+                            <TextView
+                                android:id="@+id/returnRateText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/white"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Return Rate"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12sp"
+                                android:layout_marginTop="4dp"/>
+
+                            <TextView
+                                android:id="@+id/returnedPackagesCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 returned"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="10sp"
+                                android:layout_marginTop="4dp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <!-- Charts Section -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Performance Analytics"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Monthly Revenue Chart -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Monthly Revenue Trend"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"/>
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/revenueChart"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="8dp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Package Status Distribution -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Package Status Distribution"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"/>
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/packageDistributionChart"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="8dp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Quick Stats -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="16dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:id="@+id/deliveredPackagesCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/success_color"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Delivered"
+                                android:textSize="14sp"
+                                android:textColor="@color/text_secondary"
+                                android:layout_marginTop="4dp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:id="@+id/totalMerchantsText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/primary_color"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Merchants"
+                                android:textSize="14sp"
+                                android:textColor="@color/text_secondary"
+                                android:layout_marginTop="4dp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <!-- Navigation Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu"
+        android:background="@android:color/white"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"/>
 
-    <Button
-        android:id="@+id/activePackagesBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Active Packages"/>
-
-    <Button
-        android:id="@+id/deliveredPackagesBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Delivered Packages"/>
-
-    <Button
-        android:id="@+id/returnedPackagesBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Returned Packages"/>
-
-    <Button
-        android:id="@+id/allMerchantsBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="All Merchants"/>
-
-    <Button
-        android:id="@+id/allPackagesBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="All Packages"/>
-
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Logout"/>
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

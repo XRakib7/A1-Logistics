@@ -11,17 +11,17 @@ android {
         applicationId = "com.softcraft.a1logistics"
         minSdk = 28
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     //git add .
-    //git commit -m "Prepare release 1.0"
+    //git commit -m "Prepare release 1.1"
     //git push origin main
-    //git tag -a v1.0 -m "Release 1.0"
-    //git push origin v1.0
-    // gh release create v1.0 "app\release\app-release.apk" --title "Version 1.0" --notes "Initial release with basic functionality"
+    //git tag -a v1.1 -m "Release 1.1"
+    //git push origin v1.1
+    // gh release create v1.1 "app\release\app-release.apk" --title "Version 1.1" --notes "Initial release with basic functionality"
 
     buildTypes {
         release {
@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
     implementation("org.apache.poi:poi:5.2.2")
     implementation("org.apache.poi:poi-ooxml:5.2.2")
     implementation("com.google.code.gson:gson:2.8.8")
