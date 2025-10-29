@@ -146,13 +146,11 @@ public class MerchantsFragment extends Fragment {
         entries.add(new PieEntry(15f, "Others"));
 
         PieDataSet dataSet = new PieDataSet(entries, "");
-        dataSet.setColors(new int[]{
-                Color.parseColor("#FF6B6B"),
+        dataSet.setColors(Color.parseColor("#FF6B6B"),
                 Color.parseColor("#4ECDC4"),
                 Color.parseColor("#45B7D1"),
                 Color.parseColor("#96CEB4"),
-                Color.parseColor("#FFEAA7")
-        });
+                Color.parseColor("#FFEAA7"));
         dataSet.setValueTextSize(11f);
         dataSet.setValueTextColor(Color.WHITE);
 

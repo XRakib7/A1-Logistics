@@ -1,238 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/background">
 
-    <androidx.appcompat.widget.Toolbar
+    <!-- Your original toolbar stays exactly the same -->
+    <include
+        layout="@layout/toolbar_default"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary_color"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"
-        app:titleTextColor="@android:color/white"/>
+        android:layout_height="wrap_content" />
 
-    <!-- Summary Statistics Section -->
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp">
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
+        android:layout_marginTop="?attr/actionBarSize">
 
-        <LinearLayout
+        <!-- Summary Statistics Section - This will collapse -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/summaryCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My Performance Overview"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginBottom="12dp"/>
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <!-- Total Revenue -->
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:text="My Performance Overview"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="12dp"/>
 
-                    <TextView
-                        android:id="@+id/totalRevenueText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="৳0"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/success_color"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <!-- Total Revenue -->
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Total Revenue"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_secondary"/>
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/totalRevenueText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="৳0"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/success_color"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Revenue"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_secondary"/>
+
+                    </LinearLayout>
+
+                    <!-- Total Packages -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/totalPackagesText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary_color"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Packages"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_secondary"/>
+
+                    </LinearLayout>
+
+                    <!-- Success Rate -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/successRateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0%"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/info_color"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Success Rate"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_secondary"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <!-- Total Packages -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/background"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"/>
+
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
-                    <TextView
-                        android:id="@+id/totalPackagesText"
-                        android:layout_width="wrap_content"
+                    <!-- Monthly Growth -->
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/primary_color"/>
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/monthlyGrowthText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+0%"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/success_color"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Monthly Growth"
+                            android:textSize="10sp"
+                            android:textColor="@color/text_secondary"/>
+
+                    </LinearLayout>
+
+                    <!-- Avg Delivery Time -->
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Total Packages"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_secondary"/>
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/avgDeliveryTimeText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 hours"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"/>
 
-                <!-- Success Rate -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avg Delivery Time"
+                            android:textSize="10sp"
+                            android:textColor="@color/text_secondary"/>
 
-                    <TextView
-                        android:id="@+id/successRateText"
-                        android:layout_width="wrap_content"
+                    </LinearLayout>
+
+                    <!-- Return Rate -->
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="0%"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/info_color"/>
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Success Rate"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_secondary"/>
+                        <TextView
+                            android:id="@+id/returnRateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0%"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Return Rate"
+                            android:textSize="10sp"
+                            android:textColor="@color/text_secondary"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/background"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"/>
+        <!-- Sticky TabLayout -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_color"
+            app:tabTextColor="@android:color/white"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabIndicatorColor="@android:color/white"
+            app:tabMode="scrollable"
+            app:layout_scrollFlags="noScroll" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
+    </com.google.android.material.appbar.AppBarLayout>
 
-                <!-- Monthly Growth -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/monthlyGrowthText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+0%"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/success_color"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Monthly Growth"
-                        android:textSize="10sp"
-                        android:textColor="@color/text_secondary"/>
-
-                </LinearLayout>
-
-                <!-- Avg Delivery Time -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/avgDeliveryTimeText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0 hours"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Avg Delivery Time"
-                        android:textSize="10sp"
-                        android:textColor="@color/text_secondary"/>
-
-                </LinearLayout>
-
-                <!-- Return Rate -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/returnRateText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0%"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Return Rate"
-                        android:textSize="10sp"
-                        android:textColor="@color/text_secondary"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_color"
-        app:tabTextColor="@android:color/white"
-        app:tabSelectedTextColor="@android:color/white"
-        app:tabIndicatorColor="@android:color/white"
-        app:tabMode="scrollable"/>
-
+    <!-- ViewPager2 -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

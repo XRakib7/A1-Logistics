@@ -26,13 +26,11 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 public class MerchantOverviewFragment extends Fragment {
@@ -86,29 +84,6 @@ public class MerchantOverviewFragment extends Fragment {
         monthlyGrowthText = view.findViewById(R.id.monthlyGrowthText);
         returnRateText = view.findViewById(R.id.returnRateText);
 
-        // Check which views are null and log for debugging
-        if (totalRevenueText == null) {
-            android.util.Log.e("MerchantOverview", "totalRevenueText is null");
-        }
-        if (completedOrdersText == null) {
-            android.util.Log.e("MerchantOverview", "completedOrdersText is null");
-        }
-        if (pendingOrdersText == null) {
-            android.util.Log.e("MerchantOverview", "pendingOrdersText is null");
-        }
-        if (successRateText == null) {
-            android.util.Log.e("MerchantOverview", "successRateText is null");
-        }
-        if (avgDeliveryTimeText == null) {
-            android.util.Log.e("MerchantOverview", "avgDeliveryTimeText is null");
-        }
-        if (monthlyGrowthText == null) {
-            android.util.Log.e("MerchantOverview", "monthlyGrowthText is null");
-        }
-        if (returnRateText == null) {
-            android.util.Log.e("MerchantOverview", "returnRateText is null");
-        }
-
         setupWeeklyChart();
         setupStatusChart();
     }
@@ -142,7 +117,6 @@ public class MerchantOverviewFragment extends Fragment {
     private void loadOverviewData() {
         loadWeeklyData();
         loadStatusData();
-        loadSummaryStats();
     }
 
     private void loadWeeklyData() {
@@ -198,10 +172,6 @@ public class MerchantOverviewFragment extends Fragment {
                 });
     }
 
-    private void loadSummaryStats() {
-        // Additional summary stats can be loaded here
-    }
-
     private void updateWeeklyChart(int[] dailyCounts) {
         ArrayList<BarEntry> entries = new ArrayList<>();
         String[] days = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
@@ -230,11 +200,9 @@ public class MerchantOverviewFragment extends Fragment {
         if (returned > 0) entries.add(new PieEntry(returned, "Returned"));
 
         PieDataSet dataSet = new PieDataSet(entries, "");
-        dataSet.setColors(new int[]{
-                Color.parseColor("#4CAF50"),
+        dataSet.setColors(Color.parseColor("#4CAF50"),
                 Color.parseColor("#FF9800"),
-                Color.parseColor("#F44336")
-        });
+                Color.parseColor("#F44336"));
 
         PieData data = new PieData(dataSet);
         data.setValueTextSize(12f);

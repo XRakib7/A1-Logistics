@@ -331,7 +331,7 @@ public class MerchantDashboardActivity extends BaseActivity {
                 startActivity(new Intent(this, AllMerchantsActivity.class));
 
             } else if (id == R.id.nav_reports) {
-                startActivity(new Intent(this, ReportsActivity.class));
+                startActivity(new Intent(this, MerchantReportsActivity.class));
 
             } else if (id == R.id.nav_settings) {
                 startActivity(new Intent(this, SettingsActivity.class));

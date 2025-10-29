@@ -178,11 +178,9 @@ public class OverviewFragment extends Fragment {
         if (returned > 0) entries.add(new PieEntry(returned, "Returned"));
 
         PieDataSet dataSet = new PieDataSet(entries, "");
-        dataSet.setColors(new int[]{
-                Color.parseColor("#4CAF50"),
+        dataSet.setColors(Color.parseColor("#4CAF50"),
                 Color.parseColor("#FF9800"),
-                Color.parseColor("#F44336")
-        });
+                Color.parseColor("#F44336"));
 
         PieData data = new PieData(dataSet);
         data.setValueTextSize(12f);

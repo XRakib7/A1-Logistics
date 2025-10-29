@@ -161,11 +161,9 @@ public class PackagesFragment extends Fragment {
         if (returned > 0) entries.add(new PieEntry(returned, "Returned"));
 
         PieDataSet dataSet = new PieDataSet(entries, "");
-        dataSet.setColors(new int[]{
-                Color.parseColor("#4CAF50"),
+        dataSet.setColors(Color.parseColor("#4CAF50"),
                 Color.parseColor("#FF9800"),
-                Color.parseColor("#F44336")
-        });
+                Color.parseColor("#F44336"));
         dataSet.setValueTextSize(12f);
         dataSet.setValueTextColor(Color.WHITE);
 

@@ -16,8 +16,8 @@ import java.util.Map;
 
 public class RecentActivityAdapter extends RecyclerView.Adapter<RecentActivityAdapter.ViewHolder> {
 
-    private List<Map<String, Object>> recentActivities;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault());
+    private final List<Map<String, Object>> recentActivities;
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault());
 
     public RecentActivityAdapter(List<Map<String, Object>> recentActivities) {
         this.recentActivities = recentActivities;

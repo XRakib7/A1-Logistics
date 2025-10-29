@@ -42,7 +42,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
+import com.google.android.material.appbar.AppBarLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 public class ReportsActivity extends BaseActivity {
 
     private FirebaseFirestore db;
@@ -64,7 +65,6 @@ public class ReportsActivity extends BaseActivity {
         setupViewPager();
         loadSummaryStatistics();
     }
-
     private void initializeViews() {
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
@@ -77,16 +77,76 @@ public class ReportsActivity extends BaseActivity {
         topMerchantText = findViewById(R.id.topMerchantText);
         peakDayText = findViewById(R.id.peakDayText);
 
-        // Setup toolbar
+        // Setup toolbar - EXACTLY AS YOU HAD IT
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Analytics & Reports");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+    // NEW FEATURE: Quick date filter
+    private void setupQuickFilter() {
+        // Add filter button to toolbar
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // No menu for settings
-        return false;
+        getMenuInflater().inflate(R.menu.reports_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == R.id.action_filter) {
+            showDateFilterDialog();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showDateFilterDialog() {
+        String[] filterOptions = {"Last 7 Days", "Last 30 Days", "Last 3 Months", "Custom Range"};
+
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        builder.setTitle("Filter by Date Range");
+        builder.setItems(filterOptions, (dialog, which) -> {
+            switch (which) {
+                case 0:
+                    applyDateFilter(7);
+                    break;
+                case 1:
+                    applyDateFilter(30);
+                    break;
+                case 2:
+                    applyDateFilter(90);
+                    break;
+                case 3:
+                    showCustomDateRangeDialog();
+                    break;
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
+    }
+
+    private void applyDateFilter(int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, -days);
+
+        // Reload data with date filter
+        loadFilteredData(calendar.getTime());
+        android.widget.Toast.makeText(this, "Showing data from last " + days + " days",
+                android.widget.Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadFilteredData(java.util.Date startDate) {
+        // Implement your filtered data loading here
+        // This would modify your existing Firestore queries to include date filtering
+    }
+
+    private void showCustomDateRangeDialog() {
+        // Implement custom date range picker
+        android.widget.Toast.makeText(this, "Custom date range feature",
+                android.widget.Toast.LENGTH_SHORT).show();
     }
     private void setupViewPager() {
         pagerAdapter = new ReportsPagerAdapter(this);

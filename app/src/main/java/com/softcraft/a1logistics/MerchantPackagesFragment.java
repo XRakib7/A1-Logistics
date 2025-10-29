@@ -29,7 +29,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 public class MerchantPackagesFragment extends Fragment {
@@ -181,11 +180,9 @@ public class MerchantPackagesFragment extends Fragment {
         if (returned > 0) entries.add(new PieEntry(returned, "Returned"));
 
         PieDataSet dataSet = new PieDataSet(entries, "");
-        dataSet.setColors(new int[]{
-                Color.parseColor("#4CAF50"),
+        dataSet.setColors(Color.parseColor("#4CAF50"),
                 Color.parseColor("#FF9800"),
-                Color.parseColor("#F44336")
-        });
+                Color.parseColor("#F44336"));
         dataSet.setValueTextSize(12f);
         dataSet.setValueTextColor(Color.WHITE);
         dataSet.setValueFormatter(new ValueFormatter() {

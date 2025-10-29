@@ -24,13 +24,17 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class MerchantRevenueFragment extends Fragment {
 
@@ -185,62 +189,94 @@ public class MerchantRevenueFragment extends Fragment {
     }
 
     private void updateRevenueChart() {
-        // Sample revenue trend data for this merchant
-        ArrayList<Entry> values = new ArrayList<>();
-        values.add(new Entry(0, 12000));
-        values.add(new Entry(1, 15000));
-        values.add(new Entry(2, 11000));
-        values.add(new Entry(3, 18000));
-        values.add(new Entry(4, 22000));
-        values.add(new Entry(5, 25000));
+        // Load actual revenue trend data for this merchant
+        db.collection("PickupRequests")
+                .whereEqualTo("merchantId", merchantId)
+                .orderBy("createdDate", Query.Direction.ASCENDING)
+                .limit(6)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    ArrayList<Entry> values = new ArrayList<>();
+                    int index = 0;
 
-        LineDataSet dataSet = new LineDataSet(values, "Monthly Revenue");
-        dataSet.setColor(Color.parseColor("#2196F3"));
-        dataSet.setCircleColor(Color.parseColor("#2196F3"));
-        dataSet.setLineWidth(2f);
-        dataSet.setCircleRadius(4f);
-        dataSet.setDrawCircleHole(false);
-        dataSet.setValueTextSize(10f);
-        dataSet.setValueFormatter(new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value) {
-                return String.format("৳%.0f", value);
-            }
-        });
+                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                        Double codPrice = document.getDouble("codPrice");
+                        if (codPrice != null) {
+                            values.add(new Entry(index, codPrice.floatValue()));
+                            index++;
+                        }
+                    }
 
-        LineData lineData = new LineData(dataSet);
-        revenueChart.setData(lineData);
-        revenueChart.invalidate();
+                    LineDataSet dataSet = new LineDataSet(values, "Monthly Revenue");
+                    dataSet.setColor(Color.parseColor("#2196F3"));
+                    dataSet.setCircleColor(Color.parseColor("#2196F3"));
+                    dataSet.setLineWidth(2f);
+                    dataSet.setCircleRadius(4f);
+                    dataSet.setDrawCircleHole(false);
+                    dataSet.setValueTextSize(10f);
+                    dataSet.setValueFormatter(new ValueFormatter() {
+                        @Override
+                        public String getFormattedValue(float value) {
+                            return String.format("৳%.0f", value);
+                        }
+                    });
+
+                    LineData lineData = new LineData(dataSet);
+                    revenueChart.setData(lineData);
+                    revenueChart.invalidate();
+                });
     }
 
     private void updateMonthlyBreakdownChart() {
-        // Sample monthly breakdown data for this merchant
-        ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(0, 12));
-        entries.add(new BarEntry(1, 15));
-        entries.add(new BarEntry(2, 11));
-        entries.add(new BarEntry(3, 18));
-        entries.add(new BarEntry(4, 22));
-        entries.add(new BarEntry(5, 25));
+        // Load actual monthly breakdown data for this merchant
+        db.collection("PickupRequests")
+                .whereEqualTo("merchantId", merchantId)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    // Calculate monthly revenue breakdown
+                    Map<String, Float> monthlyRevenue = new HashMap<>();
+                    SimpleDateFormat monthFormat = new SimpleDateFormat("MMM", Locale.getDefault());
 
-        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun"};
+                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                        Double codPrice = document.getDouble("codPrice");
+                        if (codPrice != null && document.getTimestamp("createdDate") != null) {
+                            Date createdDate = document.getTimestamp("createdDate").toDate();
+                            String month = monthFormat.format(createdDate);
 
-        BarDataSet dataSet = new BarDataSet(entries, "Monthly Revenue");
-        dataSet.setColor(Color.parseColor("#4CAF50"));
-        dataSet.setValueTextSize(10f);
-        dataSet.setValueFormatter(new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value) {
-                return String.format("৳%.0f", value * 1000);
-            }
-        });
+                            float currentRevenue = monthlyRevenue.getOrDefault(month, 0f);
+                            monthlyRevenue.put(month, currentRevenue + codPrice.floatValue());
+                        }
+                    }
 
-        BarData data = new BarData(dataSet);
-        monthlyBreakdownChart.setData(data);
+                    // Convert to chart data
+                    ArrayList<BarEntry> entries = new ArrayList<>();
+                    String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+                    List<String> availableMonths = new ArrayList<>();
 
-        XAxis xAxis = monthlyBreakdownChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(months));
+                    for (int i = 0; i < months.length; i++) {
+                        if (monthlyRevenue.containsKey(months[i])) {
+                            entries.add(new BarEntry(availableMonths.size(), monthlyRevenue.get(months[i])));
+                            availableMonths.add(months[i]);
+                        }
+                    }
 
-        monthlyBreakdownChart.invalidate();
+                    BarDataSet dataSet = new BarDataSet(entries, "Monthly Revenue");
+                    dataSet.setColor(Color.parseColor("#4CAF50"));
+                    dataSet.setValueTextSize(10f);
+                    dataSet.setValueFormatter(new ValueFormatter() {
+                        @Override
+                        public String getFormattedValue(float value) {
+                            return String.format("৳%.0f", value);
+                        }
+                    });
+
+                    BarData data = new BarData(dataSet);
+                    monthlyBreakdownChart.setData(data);
+
+                    XAxis xAxis = monthlyBreakdownChart.getXAxis();
+                    xAxis.setValueFormatter(new IndexAxisValueFormatter(availableMonths.toArray(new String[0])));
+
+                    monthlyBreakdownChart.invalidate();
+                });
     }
 }

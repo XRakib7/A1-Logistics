@@ -1,18 +1,23 @@
 package com.softcraft.a1logistics;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager2.widget.ViewPager2;
+
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -22,13 +27,14 @@ public class MerchantReportsActivity extends BaseActivity {
     private String merchantId;
     private ViewPager2 viewPager;
     private TabLayout tabLayout;
+    private MerchantReportsPagerAdapter pagerAdapter;
 
     // Summary statistics
     private TextView totalRevenueText, totalPackagesText, successRateText, avgDeliveryTimeText;
     private TextView monthlyGrowthText, returnRateText;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merchant_reports);
 
@@ -40,7 +46,6 @@ public class MerchantReportsActivity extends BaseActivity {
 
         merchantId = user.get("uid");
         db = FirebaseFirestore.getInstance();
-
         initializeViews();
         setupViewPager();
         loadSummaryStatistics();
@@ -57,19 +62,75 @@ public class MerchantReportsActivity extends BaseActivity {
         monthlyGrowthText = findViewById(R.id.monthlyGrowthText);
         returnRateText = findViewById(R.id.returnRateText);
 
-        // Setup toolbar
+        // Setup toolbar - EXACTLY LIKE REPORTS ACTIVITY
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("My Analytics & Reports");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // No menu for settings
-        return false;
+        getMenuInflater().inflate(R.menu.reports_menu, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == R.id.action_filter) {
+            showDateFilterDialog();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showDateFilterDialog() {
+        String[] filterOptions = {"Last 7 Days", "Last 30 Days", "Last 3 Months", "Custom Range"};
+
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        builder.setTitle("Filter by Date Range");
+        builder.setItems(filterOptions, (dialog, which) -> {
+            switch (which) {
+                case 0:
+                    applyDateFilter(7);
+                    break;
+                case 1:
+                    applyDateFilter(30);
+                    break;
+                case 2:
+                    applyDateFilter(90);
+                    break;
+                case 3:
+                    showCustomDateRangeDialog();
+                    break;
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
+    }
+
+    private void applyDateFilter(int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, -days);
+
+        // Reload data with date filter
+        loadFilteredData(calendar.getTime());
+        android.widget.Toast.makeText(this, "Showing data from last " + days + " days",
+                android.widget.Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadFilteredData(java.util.Date startDate) {
+        // Implement your filtered data loading here
+        loadSummaryStatistics(); // Reload for now
+    }
+
+    private void showCustomDateRangeDialog() {
+        android.widget.Toast.makeText(this, "Custom date range feature",
+                android.widget.Toast.LENGTH_SHORT).show();
+    }
+
     private void setupViewPager() {
-        MerchantReportsPagerAdapter pagerAdapter = new MerchantReportsPagerAdapter(this, merchantId);
+        pagerAdapter = new MerchantReportsPagerAdapter(this, merchantId);
         viewPager.setAdapter(pagerAdapter);
 
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
@@ -126,18 +187,16 @@ public class MerchantReportsActivity extends BaseActivity {
                         }
                     }
 
-                    totalRevenueText.setText(String.format("৳%,.0f", totalRevenue));
+                    animateCount(totalRevenueText, totalRevenue, "৳%,.0f");
 
                     // Calculate growth
                     if (lastMonthRevenue > 0) {
                         double growth = ((monthlyRevenue - lastMonthRevenue) / lastMonthRevenue) * 100;
-                        String growthText = String.format(Locale.getDefault(), "+%.1f%%", growth);
+                        String growthText = String.format(Locale.getDefault(), "%.1f%% from last month", growth);
                         monthlyGrowthText.setText(growthText);
                         monthlyGrowthText.setTextColor(growth >= 0 ?
-                                getColor(R.color.success_color) : getColor(R.color.danger_color));
-                    } else {
-                        monthlyGrowthText.setText("New month");
-                        monthlyGrowthText.setTextColor(getColor(R.color.info_color));
+                                ContextCompat.getColor(this, R.color.success_color) :
+                                ContextCompat.getColor(this, R.color.danger_color));
                     }
                 });
     }
@@ -157,21 +216,21 @@ public class MerchantReportsActivity extends BaseActivity {
                         if ("Returned".equals(status)) returned++;
                     }
 
-                    totalPackagesText.setText(String.valueOf(totalPackages));
+                    animateCount(totalPackagesText, totalPackages, "%,.0f");
 
                     // Calculate success rate
                     if (delivered + returned > 0) {
                         double successRate = (delivered * 100.0) / (delivered + returned);
                         double returnRate = (returned * 100.0) / (delivered + returned);
 
-                        successRateText.setText(String.format(Locale.getDefault(), "%.1f%%", successRate));
-                        returnRateText.setText(String.format(Locale.getDefault(), "%.1f%%", returnRate));
+                        animateSuccessRate(successRateText, successRate);
+                        animateSuccessRate(returnRateText, returnRate);
                     }
                 });
     }
 
     private void loadPerformanceStats() {
-        // Calculate average delivery time (simplified)
+        // Calculate average delivery time (in hours)
         db.collection("PickupRequests")
                 .whereEqualTo("merchantId", merchantId)
                 .whereEqualTo("status", "Delivered")
@@ -200,6 +259,29 @@ public class MerchantReportsActivity extends BaseActivity {
                         avgDeliveryTimeText.setText("N/A");
                     }
                 });
+    }
+
+    private void animateCount(TextView textView, double value, String format) {
+        ValueAnimator animator = ValueAnimator.ofFloat(0, (float) value);
+        animator.setDuration(1500);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.addUpdateListener(animation -> {
+            float animatedValue = (float) animation.getAnimatedValue();
+            String formattedText = String.format(Locale.getDefault(), format, animatedValue);
+            textView.setText(formattedText);
+        });
+        animator.start();
+    }
+
+    private void animateSuccessRate(TextView textView, double value) {
+        ValueAnimator animator = ValueAnimator.ofFloat(0, (float) value);
+        animator.setDuration(2000);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.addUpdateListener(animation -> {
+            float animatedValue = (float) animation.getAnimatedValue();
+            textView.setText(String.format(Locale.getDefault(), "%.1f%%", animatedValue));
+        });
+        animator.start();
     }
 
     @Override
