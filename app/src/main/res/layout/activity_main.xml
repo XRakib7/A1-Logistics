@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bg_gradient_yellow"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -171,43 +171,59 @@
                 android:id="@+id/searchCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="?attr/colorSurface"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@color/primary_dark"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Track Your Shipment"
-                        android:textColor="?attr/colorOnSurface"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Enter your order ID or phone number to track"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         app:endIconMode="clear_text"
-                        app:endIconTint="@color/primary"
+                        app:endIconTint="@android:color/white"
                         app:startIconDrawable="@drawable/ic_search"
-                        app:startIconTint="@color/gold_primary"
+                        app:startIconTint="@android:color/white"
                         app:helperText="Enter Order ID (A1-M001-0001) or Phone Number"
                         app:helperTextEnabled="true"
-                        style="@style/CuteButtonStyle.Dashboard.Outlined">
+                        app:boxBackgroundColor="@android:color/white"
+                        app:hintTextColor="@android:color/white"
+                        app:helperTextTextColor="#CCFFFFFF"
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/trackingNumberInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Order ID or Phone Number"
-                            android:inputType="text" />
+                            android:inputType="text"
+                            android:textColor="@android:color/white"
+                            android:textColorHint="#CCFFFFFF" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
@@ -217,10 +233,14 @@
                         android:layout_marginTop="16dp"
                         android:text="Track Now"
                         android:textAllCaps="false"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:backgroundTint="@android:color/white"
+                        android:textColor="@color/primary_color"
                         app:icon="@drawable/ic_location"
                         app:iconGravity="textStart"
                         app:cornerRadius="8dp"
-                        style="@style/Widget.MaterialComponents.Button" />
+                        style="@style/Widget.Material3.Button" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

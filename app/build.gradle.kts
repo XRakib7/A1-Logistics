@@ -11,8 +11,8 @@ android {
         applicationId = "com.softcraft.a1logistics"
         minSdk = 28
         targetSdk = 35
-        versionCode = 3
-        versionName = "1.2"
+        versionCode = 5
+        versionName = "1.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,16 +21,16 @@ android {
     // Gradle version 8.11.1
     // agp (libs.versions.toml) version 8.10.1
     //git add .
-    //git commit -m "Prepare release 1.2"
+    //git commit -m "Prepare release 1.4"
     //git push origin main
-    //git tag -a v1.2 -m "Release 1.2"
-    //git push origin v1.2
-    // gh release create v1.2 "app\release\app-release.apk" --title "Version 1.2" --notes "Initial release with Advanced functionality"
+    //git tag -a v1.4 -m "Release 1.4"
+    //git push origin v1.4
+    // gh release create v1.4 "app\release\app-release.apk" --title "Version 1.4" --notes "Initial release with Advanced functionality"
 
     buildTypes {
         release {
-            isMinifyEnabled = true
-            isShrinkResources = true
+            isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -54,7 +54,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-base:18.6.0") // Usually required
     implementation("androidx.appcompat:appcompat:1.6.1") // or the latest version
     implementation("com.airbnb.android:lottie:6.1.0") // Latest stable version
-    implementation("com.google.android.gms:play-services-auth:21.3.0")
+    implementation("com.google.android.gms:play-services-auth:21.4.0")
     // https://mvnrepository.com/artifact/com.google.android.gms/play-services-auth-api-phone
     implementation("com.google.android.gms:play-services-auth-api-phone:18.2.0")
     // https://mvnrepository.com/artifact/androidx.gridlayout/gridlayout

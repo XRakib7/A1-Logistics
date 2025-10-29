@@ -1,10 +1,12 @@
 package com.softcraft.a1logistics;
 
+import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -167,10 +169,10 @@ public class MerchantPackagesFragment extends Fragment {
     }
 
     private void updatePackageStats(int total, int delivered, int active, int returned) {
-        totalPackagesText.setText(String.valueOf(total));
-        deliveredPackagesText.setText(String.valueOf(delivered));
-        activePackagesText.setText(String.valueOf(active));
-        returnedPackagesText.setText(String.valueOf(returned));
+        animateCount(totalPackagesText, total, "%,.0f");
+        animateCount(deliveredPackagesText, delivered, "%,.0f");
+        animateCount(activePackagesText, active, "%,.0f");
+        animateCount(returnedPackagesText, returned, "%,.0f");
     }
 
     private void updatePackageStatusChart(int delivered, int active, int returned) {
@@ -222,7 +224,7 @@ public class MerchantPackagesFragment extends Fragment {
         // Calculate success rate
         if (delivered + returned > 0) {
             double successRate = (delivered * 100.0) / (delivered + returned);
-            successRateText.setText(String.format(Locale.getDefault(), "%.1f%%", successRate));
+            animateSuccessRate(successRate);
         }
 
         // Calculate average delivery time (simplified)
@@ -240,5 +242,41 @@ public class MerchantPackagesFragment extends Fragment {
             case "Sunday": return 6;
             default: return -1;
         }
+    }
+
+    private void animateCount(TextView textView, double value, String format) {
+        if (textView == null) return;
+
+        ValueAnimator animator = ValueAnimator.ofFloat(0, (float) value);
+        animator.setDuration(1500);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.addUpdateListener(animation -> {
+            float animatedValue = (float) animation.getAnimatedValue();
+
+            // Handle format conversion safely
+            String formattedText;
+            if (format.contains("%d")) {
+                // Convert float to int for %d format
+                formattedText = String.format(Locale.getDefault(), format, (int) animatedValue);
+            } else {
+                // Use as float for %f format
+                formattedText = String.format(Locale.getDefault(), format, animatedValue);
+            }
+            textView.setText(formattedText);
+        });
+        animator.start();
+    }
+
+    private void animateSuccessRate(double value) {
+        if (successRateText == null) return;
+
+        ValueAnimator animator = ValueAnimator.ofFloat(0, (float) value);
+        animator.setDuration(2000);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.addUpdateListener(animation -> {
+            float animatedValue = (float) animation.getAnimatedValue();
+            successRateText.setText(String.format(Locale.getDefault(), "%.1f%%", animatedValue));
+        });
+        animator.start();
     }
 }

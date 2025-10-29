@@ -26,11 +26,13 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class MerchantOverviewFragment extends Fragment {
@@ -84,6 +86,29 @@ public class MerchantOverviewFragment extends Fragment {
         monthlyGrowthText = view.findViewById(R.id.monthlyGrowthText);
         returnRateText = view.findViewById(R.id.returnRateText);
 
+        // Check which views are null and log for debugging
+        if (totalRevenueText == null) {
+            android.util.Log.e("MerchantOverview", "totalRevenueText is null");
+        }
+        if (completedOrdersText == null) {
+            android.util.Log.e("MerchantOverview", "completedOrdersText is null");
+        }
+        if (pendingOrdersText == null) {
+            android.util.Log.e("MerchantOverview", "pendingOrdersText is null");
+        }
+        if (successRateText == null) {
+            android.util.Log.e("MerchantOverview", "successRateText is null");
+        }
+        if (avgDeliveryTimeText == null) {
+            android.util.Log.e("MerchantOverview", "avgDeliveryTimeText is null");
+        }
+        if (monthlyGrowthText == null) {
+            android.util.Log.e("MerchantOverview", "monthlyGrowthText is null");
+        }
+        if (returnRateText == null) {
+            android.util.Log.e("MerchantOverview", "returnRateText is null");
+        }
+
         setupWeeklyChart();
         setupStatusChart();
     }
@@ -117,6 +142,7 @@ public class MerchantOverviewFragment extends Fragment {
     private void loadOverviewData() {
         loadWeeklyData();
         loadStatusData();
+        loadSummaryStats();
     }
 
     private void loadWeeklyData() {
@@ -158,18 +184,34 @@ public class MerchantOverviewFragment extends Fragment {
                         String status = document.getString("status");
                         Double codPrice = document.getDouble("codPrice");
 
+                        // 🟢 FIX: Calculate revenue from ALL packages, not just delivered ones
+                        if (codPrice != null) {
+                            totalRevenue += codPrice;
+                        }
+
                         if ("Delivered".equals(status)) {
                             delivered++;
-                            if (codPrice != null) {
-                                totalRevenue += codPrice;
-                            }
-                        } else if ("Returned".equals(status)) returned++;
-                        else active++;
+                        } else if ("Returned".equals(status)) {
+                            returned++;
+                        } else {
+                            active++;
+                        }
                     }
 
                     updateStatusChart(delivered, active, returned);
                     updateSummaryStats(delivered, active, returned, totalRevenue);
+                })
+                .addOnFailureListener(e -> {
+                    android.util.Log.e("MerchantOverview", "Error loading status data: " + e.getMessage());
+                    // Show error or default values
+                    if (totalRevenueText != null) {
+                        totalRevenueText.setText("৳0");
+                    }
                 });
+    }
+
+    private void loadSummaryStats() {
+        // Additional summary stats can be loaded here
     }
 
     private void updateWeeklyChart(int[] dailyCounts) {

@@ -1,10 +1,12 @@
 package com.softcraft.a1logistics;
 
+import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -174,8 +176,8 @@ public class MerchantRevenueFragment extends Fragment {
     }
 
     private void updateRevenueStats(double totalRevenue, double monthlyRevenue, int totalPackages) {
-        totalRevenueText.setText(String.format("৳%,.0f", totalRevenue));
-        monthlyRevenueText.setText(String.format("৳%,.0f", monthlyRevenue));
+        animateCount(totalRevenueText, totalRevenue, "৳%,.0f");
+        animateCount(monthlyRevenueText, monthlyRevenue, "৳%,.0f");
 
         // Calculate growth (simplified)
         growthText.setText("+15.2%");
@@ -184,7 +186,7 @@ public class MerchantRevenueFragment extends Fragment {
         // Calculate average order value
         if (totalPackages > 0) {
             double avgOrderValue = totalRevenue / totalPackages;
-            avgOrderValueText.setText(String.format("৳%.0f", avgOrderValue));
+            animateCount(avgOrderValueText, avgOrderValue, "৳%.0f");
         }
     }
 
@@ -278,5 +280,28 @@ public class MerchantRevenueFragment extends Fragment {
 
                     monthlyBreakdownChart.invalidate();
                 });
+    }
+
+    private void animateCount(TextView textView, double value, String format) {
+        if (textView == null) return;
+
+        ValueAnimator animator = ValueAnimator.ofFloat(0, (float) value);
+        animator.setDuration(1500);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.addUpdateListener(animation -> {
+            float animatedValue = (float) animation.getAnimatedValue();
+
+            // Handle format conversion safely
+            String formattedText;
+            if (format.contains("%d")) {
+                // Convert float to int for %d format
+                formattedText = String.format(Locale.getDefault(), format, (int) animatedValue);
+            } else {
+                // Use as float for %f format
+                formattedText = String.format(Locale.getDefault(), format, animatedValue);
+            }
+            textView.setText(formattedText);
+        });
+        animator.start();
     }
 }

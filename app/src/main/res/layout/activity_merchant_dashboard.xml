@@ -350,6 +350,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
+
                 <!-- Package Management Grid -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -524,7 +525,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="All Packages"
+                                        android:text="All"
                                         android:textSize="14sp"
                                         android:textStyle="bold"
                                         android:textColor="@color/text_primary"
@@ -537,6 +538,58 @@
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <!-- Search Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/searchCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/primary_color"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Track Your Shipment"
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Enter your order ID or phone number to track"
+                            android:textColor="#CCFFFFFF"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/trackButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Track Now"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:backgroundTint="@android:color/white"
+                            android:textColor="@color/primary_color"
+                            app:icon="@drawable/ic_location"
+                            app:iconGravity="textStart"
+                            style="@style/Widget.Material3.Button" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
                 <!-- Package Distribution Chart -->
                 <androidx.cardview.widget.CardView

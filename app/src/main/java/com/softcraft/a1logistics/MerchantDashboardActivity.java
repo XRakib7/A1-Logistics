@@ -123,6 +123,9 @@ public class MerchantDashboardActivity extends BaseActivity {
         activeProgressBar = findViewById(R.id.activeProgressBar);
         packageDistributionChart = findViewById(R.id.packageDistributionChart);
 
+        //Search action Button
+        MaterialButton trackButton= findViewById(R.id.trackButton);
+
         // Main action button
         MaterialButton createPickupButton = findViewById(R.id.createPickupButton);
 
@@ -140,6 +143,9 @@ public class MerchantDashboardActivity extends BaseActivity {
         // Set click listeners
         createPickupButton.setOnClickListener(v ->
                 startActivity(new Intent(this, CreatePickupActivity.class)));
+
+        trackButton.setOnClickListener(view ->
+                startActivity(new Intent(this, TrackingActivity.class)));
 
         activePackagesCard.setOnClickListener(v ->
                 startActivityWithPackageType("active"));

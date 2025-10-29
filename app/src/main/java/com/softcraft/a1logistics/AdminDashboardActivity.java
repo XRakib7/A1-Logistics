@@ -34,6 +34,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -124,6 +125,9 @@ public class AdminDashboardActivity extends BaseActivity {
         returnRateText = findViewById(R.id.returnRateText);
         totalMerchantsText = findViewById(R.id.totalMerchantsText);
 
+        //Search action Button
+        MaterialButton trackButton= findViewById(R.id.trackButton);
+
         // Charts
         revenueChart = findViewById(R.id.revenueChart);
         packageDistributionChart = findViewById(R.id.packageDistributionChart);
@@ -134,6 +138,10 @@ public class AdminDashboardActivity extends BaseActivity {
         // Setup toolbar
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
+
+        // Set click listeners
+        trackButton.setOnClickListener(view ->
+                startActivity(new Intent(this, TrackingActivity.class)));
     }
 
     private void loadAdminData() {
