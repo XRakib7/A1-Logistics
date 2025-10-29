@@ -11,8 +11,8 @@ android {
         applicationId = "com.softcraft.a1logistics"
         minSdk = 28
         targetSdk = 35
-        versionCode = 5
-        versionName = "1.4"
+        versionCode = 6
+        versionName = "1.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -20,12 +20,12 @@ android {
     // android studio version 2024.3.2.14 link "https://r4---sn-q4fl6ndl.gvt1.com/edgedl/android/studio/install/2024.3.2.14/android-studio-2024.3.2.14-windows.exe?met=1761495076,&mh=Rj&pl=24&rms=ltu,ltu&shardbypass=sd&cm2rm=sn-puxacq-q5jl7e,sn-npokl76&rrc=80,80&fexp=24353128&req_id=4b4562a9ec7fa3fc&redirect_counter=2&cms_redirect=yes&cmsv=e&mip=103.89.26.170&mm=34&mn=sn-q4fl6ndl&ms=ltu&mt=1761494918&mv=m&mvi=4&rmhost=r3---sn-q4fl6ndl.gvt1.com"
     // Gradle version 8.11.1
     // agp (libs.versions.toml) version 8.10.1
-    //git add .
-    //git commit -m "Prepare release 1.4"
-    //git push origin main
-    //git tag -a v1.4 -m "Release 1.4"
-    //git push origin v1.4
-    // gh release create v1.4 "app\release\app-release.apk" --title "Version 1.4" --notes "Initial release with Advanced functionality"
+    // git add .
+    // git commit -m "Prepare release 1.5"
+    // git push origin main
+    // git tag -a v1.5 -m "Release 1.5"
+    // git push origin v1.5
+    // gh release create v1.5 "app\release\app-release.apk" --title "Version 1.5" --notes "Initial release with Advanced functionality"
 
     buildTypes {
         release {
