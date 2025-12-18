@@ -184,6 +184,10 @@
 
 5. Launch **A1 Logistics** 🚀
 
+6. To test this log in with these **Credentials**:
+   - for **admin login** email: testadmin@gmail.com and password: testadmin@gmail.comdevice:
+   - for **merchant login** email: testmerchant@gmail.com and password: testmerchant@gmail.com
+
 ---
 
 ### 🧑‍💻 Clone Repository & Run Locally (Developers)
@@ -205,5 +209,6 @@ All rights reserved © **A1 Logistics**
 ### ⭐ If you like this project, give it a star!
 
 </div>
+
 
 
