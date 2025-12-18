@@ -33,6 +33,42 @@
   - Hidden admin signup for enhanced security
 
 ---
+## 📸 Screenshots
+
+### 🔐 Authentication
+<p align="center">
+   <img src="" width="200"/>
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/auth%20login.png" width="200"/>
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/auth%20signup.png" width="200"/>
+</p>
+
+### 📦 Parcel Management
+<p align="center">
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/create%20pickup%20request%202.png" width="200"/>
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/package%20management%201.png" width="200"/>
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/package%20details%20.png" width="200"/>
+</p>
+
+
+### 📊 Analytics Dashboard
+<p align="center">
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/Analytics%201.png" width="200"/>
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/analytics%202.png" width="200"/>
+</p>
+
+### 🧑‍💼 Dashboard
+<p align="center">
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/admin%20Dashboard%201.png" width="200"/>
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/merchant%20dashboard%202.png" width="200"/>
+</p>
+  
+### Others
+<p align="center">
+  <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/our%20service%201.png" width="200"/>
+   <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/our%20service%202.png" width="200"/>
+ <img src="https://github.com/XRakib7/A1-Logistics/blob/main/Screenshots/our%20service%203.png" width="200"/>
+</p>
+  ---
 
 ### 📦 Package & Order Management
 - **Unique Package ID System**
@@ -109,37 +145,6 @@
 
 ---
 
-## 📸 Screenshots
-
-> _Replace the image paths with your actual screenshots_
-
-### 🔐 Authentication
-<p align="center">
-  <img src="screenshots/splash.png" width="200"/>
-  <img src="screenshots/login.png" width="200"/>
-  <img src="screenshots/signup.png" width="200"/>
-</p>
-
-### 📦 Parcel Management
-<p align="center">
-  <img src="screenshots/parcel_list.png" width="200"/>
-  <img src="screenshots/parcel_details.png" width="200"/>
-</p>
-
-### 📊 Analytics Dashboard
-<p align="center">
-  <img src="screenshots/analytics_overview.png" width="200"/>
-  <img src="screenshots/pie_chart.png" width="200"/>
-</p>
-
-### 🧑‍💼 Admin Panel
-<p align="center">
-  <img src="screenshots/admin_dashboard.png" width="200"/>
-  <img src="screenshots/merchant_overview.png" width="200"/>
-</p>
-
----
-
 ## 🚀 Highlights
 - Secure role-based system
 - Advanced analytics with visual charts
@@ -158,6 +163,36 @@
 - GPS-based live tracking
 
 ---
+## ⚙️ Installation
+
+**A1 Logistics** :
+
+---
+
+### 📦 Install APK (Recommended for Quick Use)
+
+1. Download the latest APK from the **Releases** section  
+   👉 `GitHub → Releases → app-release.apk`
+
+2. Copy the APK to your Android device (or download directly on the phone).
+
+3. On your device:
+   - Go to **Settings → Security**
+   - Enable **Install unknown apps** (Allow from this source)
+
+4. Tap the APK file and install the app.
+
+5. Launch **A1 Logistics** 🚀
+
+---
+
+### 🧑‍💻 Clone Repository & Run Locally (Developers)
+
+#### 1️⃣ Clone the Repository
+```bash
+[git clone](https://github.com/XRakib7/A1-Logistics.git)
+
+---
 
 ## 📄 License
 This project is for educational and internal use.  
@@ -170,3 +205,4 @@ All rights reserved © **A1 Logistics**
 ### ⭐ If you like this project, give it a star!
 
 </div>
+
